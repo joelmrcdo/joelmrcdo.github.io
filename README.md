@@ -5,7 +5,6 @@ This project hosts a simple trading blog built with [Jekyll](https://jekyllrb.co
 ## Project Goals
 
 - Document and experiment with trading strategies.
-- Provide example notebooks and reusable Python modules in `src/`.
 - Publish the blog with GitHub Pages.
 
 ## Getting Started
