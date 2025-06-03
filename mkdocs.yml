@@ -1,6 +1,0 @@
-site_name: Trading Blog
-site_url: https://example.com
-nav:
-  - Home: index.md
-docs_dir: docs
-

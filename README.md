@@ -1,7 +1,6 @@
 # Trading Blog
 
-This project hosts a simple trading blog built with [MkDocs](https://www.mkdocs.org). 
-It aims to share trading ideas and Python examples through notebooks and posts.
+This project hosts a simple trading blog built with [Jekyll](https://jekyllrb.com/) and served through GitHub Pages. It aims to share trading ideas and Python examples through notebooks and posts.
 
 ## Project Goals
 
@@ -11,31 +10,35 @@ It aims to share trading ideas and Python examples through notebooks and posts.
 
 ## Getting Started
 
-1. Create a virtual environment and install dependencies:
+1. Install Ruby and Bundler. On Ubuntu you can run:
 
    ```bash
-   python3 -m venv .venv
-   source .venv/bin/activate
-   pip install mkdocs jupyter pandas yfinance matplotlib
+   sudo apt-get install ruby-full build-essential
+   gem install bundler
    ```
 
-2. Serve the site locally:
+2. Install the project dependencies:
 
    ```bash
-   mkdocs serve
+   bundle install
    ```
 
-   Then open `http://127.0.0.1:8000/` in your browser.
+3. Serve the site locally:
 
-3. Explore the notebooks in the `notebooks/` directory with Jupyter.
+   ```bash
+   bundle exec jekyll serve
+   ```
+
+   Then open `http://127.0.0.1:4000/` in your browser.
+
+4. Explore the notebooks in the `notebooks/` directory with Jupyter.
 
 ## Deployment
 
-The site is configured for GitHub Pages using MkDocs. Build and deploy with:
+Build the static site with:
 
 ```bash
-mkdocs gh-deploy
+bundle exec jekyll build
 ```
 
-This command creates or updates the `gh-pages` branch containing the static site.
-
+The generated HTML will be available in the `_site/` directory and can be deployed to GitHub Pages.
