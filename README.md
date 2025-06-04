@@ -81,7 +81,12 @@ bundle exec jekyll build
 
 The generated HTML will be available in the `_site/` directory and can be deployed to GitHub Pages.
 
+
 ## Interactive Notebooks
 
 This site now loads a lightweight Python environment in the browser using thebe and JupyterLite. Posts such as the moving average crossover example include a **Run** button. Click it to execute code cells directly on the page. If network access is blocked, the notebook falls back to built-in sample data. When network access is available, packages like `yfinance` will fetch real market prices automatically.
+
+=======
+### Disclaimer
+This material is for educational purposes only and is not financial advice.
 
