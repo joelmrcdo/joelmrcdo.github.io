@@ -6,3 +6,5 @@ vendor/
 
 .jekyll-cache/
 .bundle/
+
+.Rhistory
