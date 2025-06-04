@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Moving Average Crossover Strategy"
-date: 2025-06-04 00:00:00 +0000
+date: 2025-06-03 00:00:00 +0000
 ---
 
 Below is a minimal Python example illustrating a simple moving average crossover approach using daily SPY prices.
