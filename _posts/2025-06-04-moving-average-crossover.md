@@ -40,8 +40,6 @@ document.getElementById('run-notebook').addEventListener('click', function() {
   thebe.bootstrap();
 });
 </script>
-
-=======
 Below is a minimal Python example illustrating a simple moving average crossover approach using daily SPY prices.
 
 ```python
