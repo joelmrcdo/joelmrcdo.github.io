@@ -80,3 +80,6 @@ bundle exec jekyll build
 ```
 
 The generated HTML will be available in the `_site/` directory and can be deployed to GitHub Pages.
+
+### Disclaimer
+This material is for educational purposes only and is not financial advice.
