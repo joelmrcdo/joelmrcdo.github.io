@@ -2,8 +2,9 @@
 
 This file lists the main steps to create and maintain a minimal welcome page.
 
-1. **Add Front Matter**
-   - Set `layout: default` and an optional `title` to use the site's theme.
+1. **Add Front Matter and Theme**
+   - Set `layout: default` and an optional `title`.
+   - Configure `_config.yml` to use the `jekyll-theme-minimal` theme.
 
 2. **Create Minimal Styles**
    - Include a small `<style>` block directly on the page.

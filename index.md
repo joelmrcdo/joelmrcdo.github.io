@@ -14,7 +14,7 @@ title: Welcome
 </style>
 
 <div class="welcome-container">
-  <h1>Welcome to the Trading Blog</h1>
-  <p>This site shares trading ideas and Python examples.</p>
+  <h1>Trading Blog</h1>
+  <p>This site uses the <code>jekyll-theme-minimal</code> theme for a clean layout.</p>
   <p>Check out the <a href="{{ '/2023/01/01/welcome.html' | relative_url }}">first post</a> to get started.</p>
 </div>

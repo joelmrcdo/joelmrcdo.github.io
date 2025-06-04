@@ -1,6 +1,7 @@
 # Trading Blog
 
 This project hosts a simple trading blog built with [Jekyll](https://jekyllrb.com/) and served through GitHub Pages. It aims to share trading ideas and Python examples through notebooks and posts.
+The site uses the `jekyll-theme-minimal` theme for a clean layout.
 
 ## Project Goals
 

@@ -3,9 +3,10 @@ description: >-
   A simple trading blog built with Jekyll.
 baseurl: "/trading-blog" # the subpath of your site, e.g. /blog
 url: "https://tu_usuario.github.io" # the base hostname & protocol for your site
+repository: "tu_usuario/trading-blog"
 
 # Build settings
 markdown: kramdown
-theme: minima
+theme: jekyll-theme-minimal
 plugins:
   - jekyll-feed
