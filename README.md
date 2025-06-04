@@ -32,6 +32,24 @@ This project hosts a simple trading blog built with [Jekyll](https://jekyllrb.co
 
 4. Explore the notebooks in the `notebooks/` directory with Jupyter.
 
+### Changing the Theme
+
+To use a theme gem such as [`minima`](https://github.com/jekyll/minima),
+add it to your `Gemfile` and update `_config.yml`:
+
+```ruby
+# Gemfile
+gem "minima"
+```
+
+```yaml
+# _config.yml
+theme: minima
+```
+
+After modifying the `Gemfile`, run `bundle update` so `Gemfile.lock`
+includes the theme version.
+
 ## Deployment
 
 Build the static site with:
