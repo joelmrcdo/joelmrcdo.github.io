@@ -2,7 +2,9 @@
 
 This note describes how to evaluate a simple moving average crossover strategy. When real market data cannot be downloaded, the example falls back to a small sample dataset so the calculations can still run.
 
-```python
+<button id="run-notebook">Run</button>
+
+<pre data-executable="true" data-language="python">
 import pandas as pd
 
 # load sample data if `yfinance` download fails
@@ -14,6 +16,13 @@ except Exception:
 
 data['fast_ma'] = data['Close'].rolling(window=2).mean()
 data['slow_ma'] = data['Close'].rolling(window=4).mean()
-```
+data.tail()
+</pre>
+
+<script>
+document.getElementById('run-notebook').addEventListener('click', function() {
+  thebe.bootstrap();
+});
+</script>
 
 **Financial disclaimer:** This material is for educational purposes only and is not financial advice.
