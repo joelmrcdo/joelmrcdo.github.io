@@ -35,13 +35,19 @@ to install any new dependencies.
    ```
 
    Run `bundle install` again whenever you modify `_config.yml` or the
-   `Gemfile` to make sure any new gems are installed.
+   `Gemfile` to make sure any new gems are installed. These commands
+   should be executed without `sudo` so Bundler can manage gems in your
+   user environment.
 
 3. Serve the site locally:
+
 
    ```bash
    bundle exec jekyll serve
    ```
+
+   Run the serve command as a normal user as well—no root privileges are
+   required.
 
    Then open `http://127.0.0.1:4000/` in your browser.
 
