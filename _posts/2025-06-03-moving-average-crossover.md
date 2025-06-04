@@ -5,6 +5,7 @@ date: 2025-06-03 00:00:00 +0000
 ---
 
 Below is a minimal Python example illustrating a simple moving average crossover approach using daily SPY prices.
+When price data cannot be retrieved, this example uses a small sample dataset so the code still runs.
 
 ```python
 import pandas as pd
@@ -18,3 +19,5 @@ print(signals.value_counts())
 ```
 
 This generates a basic signal series where `1` represents times when the fast moving average is above the slow one.
+
+**Financial disclaimer:** This material is for educational purposes only and is not financial advice.
