@@ -7,6 +7,18 @@ This project hosts a simple trading blog built with [Jekyll](https://jekyllrb.co
 - Document and experiment with trading strategies.
 - Publish the blog with GitHub Pages.
 
+## Theme
+
+The site currently uses the `jekyll-theme-minimal` theme configured in
+`_config.yml`. To try a different look, change the `theme:` value in that file
+and update the `Gemfile` if required. After editing either file, run:
+
+```bash
+bundle install
+```
+
+to install any new dependencies.
+
 ## Getting Started
 
 1. Install Ruby and Bundler. On Ubuntu you can run:
@@ -21,6 +33,9 @@ This project hosts a simple trading blog built with [Jekyll](https://jekyllrb.co
    ```bash
    bundle install
    ```
+
+   Run `bundle install` again whenever you modify `_config.yml` or the
+   `Gemfile` to make sure any new gems are installed.
 
 3. Serve the site locally:
 
