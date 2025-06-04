@@ -7,6 +7,18 @@ This project hosts a simple trading blog built with [Jekyll](https://jekyllrb.co
 - Document and experiment with trading strategies.
 - Publish the blog with GitHub Pages.
 
+## Theme
+
+The site currently uses the `jekyll-theme-minimal` theme configured in
+`_config.yml`. To try a different look, change the `theme:` value in that file
+and update the `Gemfile` if required. After editing either file, run:
+
+```bash
+bundle install
+```
+
+to install any new dependencies.
+
 ## Getting Started
 
 1. Install Ruby and Bundler. On Ubuntu you can run:
@@ -22,15 +34,42 @@ This project hosts a simple trading blog built with [Jekyll](https://jekyllrb.co
    bundle install
    ```
 
+   Run `bundle install` again whenever you modify `_config.yml` or the
+   `Gemfile` to make sure any new gems are installed. These commands
+   should be executed without `sudo` so Bundler can manage gems in your
+   user environment.
+
 3. Serve the site locally:
+
 
    ```bash
    bundle exec jekyll serve
    ```
 
+   Run the serve command as a normal user as well—no root privileges are
+   required.
+
    Then open `http://127.0.0.1:4000/` in your browser.
 
 4. Explore the notebooks in the `notebooks/` directory with Jupyter.
+
+### Changing the Theme
+
+To use a theme gem such as [`minima`](https://github.com/jekyll/minima),
+add it to your `Gemfile` and update `_config.yml`:
+
+```ruby
+# Gemfile
+gem "minima"
+```
+
+```yaml
+# _config.yml
+theme: minima
+```
+
+After modifying the `Gemfile`, run `bundle update` so `Gemfile.lock`
+includes the theme version.
 
 ## Deployment
 
@@ -41,3 +80,6 @@ bundle exec jekyll build
 ```
 
 The generated HTML will be available in the `_site/` directory and can be deployed to GitHub Pages.
+
+### Disclaimer
+This material is for educational purposes only and is not financial advice.
