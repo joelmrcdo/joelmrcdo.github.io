@@ -9,6 +9,7 @@ date: 2025-06-04 00:00:00 +0000
 
 <pre data-executable="true" data-language="python">
 import pandas as pd
+import matplotlib.pyplot as plt
 try:
     import yfinance as yf
     data = yf.download('SPY', start='2020-01-01', end='2020-12-31')
@@ -34,6 +35,7 @@ except Exception as e:
 data['fast_ma'] = data['Close'].rolling(3).mean()
 data['slow_ma'] = data['Close'].rolling(6).mean()
 ax = data[['fast_ma', 'slow_ma']].plot(title='SMA Crossover')
+plt.show()
 </pre>
 <script>
 document.getElementById('run-notebook').addEventListener('click', function() {
