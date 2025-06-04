@@ -35,17 +35,41 @@ to install any new dependencies.
    ```
 
    Run `bundle install` again whenever you modify `_config.yml` or the
-   `Gemfile` to make sure any new gems are installed.
+   `Gemfile` to make sure any new gems are installed. These commands
+   should be executed without `sudo` so Bundler can manage gems in your
+   user environment.
 
 3. Serve the site locally:
+
 
    ```bash
    bundle exec jekyll serve
    ```
 
+   Run the serve command as a normal user as well—no root privileges are
+   required.
+
    Then open `http://127.0.0.1:4000/` in your browser.
 
 4. Explore the notebooks in the `notebooks/` directory with Jupyter.
+
+### Changing the Theme
+
+To use a theme gem such as [`minima`](https://github.com/jekyll/minima),
+add it to your `Gemfile` and update `_config.yml`:
+
+```ruby
+# Gemfile
+gem "minima"
+```
+
+```yaml
+# _config.yml
+theme: minima
+```
+
+After modifying the `Gemfile`, run `bundle update` so `Gemfile.lock`
+includes the theme version.
 
 ## Deployment
 
