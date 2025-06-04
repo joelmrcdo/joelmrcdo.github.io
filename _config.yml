@@ -2,7 +2,7 @@ title: Trading Blog
 description: >-
   A simple trading blog built with Jekyll.
 baseurl: ""
-url: "https://tu_usuario.github.io" # the base hostname & protocol for your site
+url: "https://joelmrcdo.github.io" # the base hostname & protocol for your site
 
 # Build settings
 markdown: kramdown
