@@ -86,6 +86,9 @@ The generated HTML will be available in the `_site/` directory and can be deploy
 
 This site now loads a lightweight Python environment in the browser using Thebe and JupyterLite. Posts and notebook pages include a **Run** button. Click it to execute the code directly in your browser—no local Python installation is required. When network access is unavailable, the examples fall back to built‑in sample data so charts can still be generated. Once connectivity is restored, the same cells will automatically pull real prices via `yfinance`.
 
+
+The required thebe scripts and stylesheets are bundled locally under `assets/thebe/` so the site works without an internet connection.
+
 ### Disclaimer
 This material is for educational purposes only and is not financial advice.
 
