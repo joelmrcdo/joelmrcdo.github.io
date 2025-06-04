@@ -27,5 +27,9 @@ title: Home
   </ul>
 
   <h2>About</h2>
+
+  <p>Notebooks used for exploration live in the <a href="{{ '/notebooks/' | relative_url }}">notebooks</a> folder. Posts summarise ideas such as the <a href="{{ '/2025/06/04/moving-average-crossover.html' | relative_url }}">moving average crossover strategy</a>.</p>
+=======
   <p>Notebooks used for exploration live in the <a href="{{ '/notebooks/' | relative_url }}">notebooks</a> folder. Posts summarise ideas such as the <a href="{{ '/2025/06/03/moving-average-crossover.html' | relative_url }}">moving average crossover strategy</a>.</p>
+
 </div>
