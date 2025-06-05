@@ -35,6 +35,20 @@ pd.DataFrame({'total_return': [total_return], 'trades': [num_trades]})
 <script>
 document.getElementById('run-notebook').addEventListener('click', function() {
   thebe.bootstrap();
+  let kernelReady = false;
+  thebe.once('kernel_ready.Kernel', () => {
+    kernelReady = true;
+    thebe.runAll();
+  });
+  setTimeout(function () {
+    if (!kernelReady) {
+      console.error('Thebe kernel did not start within 10 seconds.');
+      const msg = document.createElement('div');
+      msg.textContent = 'Failed to start Python kernel. See console for details.';
+      msg.style.color = 'red';
+      document.body.prepend(msg);
+    }
+  }, 10000);
 });
 </script>
 
