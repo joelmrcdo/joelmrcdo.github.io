@@ -58,6 +58,18 @@ date: 2025-06-04 00:00:00 +0000
       <option value="put">Put</option>
     </select>
   </label>
+  <label>Delta override (optional)
+    <input id="delta" type="number" step="any" />
+  </label>
+  <label>Gamma override (optional)
+    <input id="gamma" type="number" step="any" />
+  </label>
+  <label>Theta override/day (optional)
+    <input id="theta" type="number" step="any" />
+  </label>
+  <label>Vega override (optional)
+    <input id="vega" type="number" step="any" />
+  </label>
   <button id="calc">Calculate</button>
   <pre id="result"></pre>
 </div>
@@ -72,7 +84,6 @@ function normCdf(x) {
 
 function normPdf(x) {
   return Math.exp(-0.5 * x * x) / Math.sqrt(2 * Math.PI);
-  if (x >= 0) return 1 - prob; else return prob;
 }
 
 function blackScholes(S, K, T, r, sigma, type) {
@@ -99,10 +110,6 @@ function blackScholesGreeks(S, K, T, r, sigma, type) {
     theta = (thetaTerm + r * K * Math.exp(-r * T) * normCdf(-d2)) / 365;
   }
   return { delta: delta, gamma: gamma, vega: vega, theta: theta };
-=======
-  } else {
-    return K * Math.exp(-r * T) * normCdf(-d2) - S * normCdf(-d1);
-  }
 }
 
 document.getElementById('calc').addEventListener('click', function() {
@@ -114,9 +121,17 @@ document.getElementById('calc').addEventListener('click', function() {
   var sigma = parseFloat(document.getElementById('iv').value) / 100;
   var r = parseFloat(document.getElementById('rate').value) / 100;
   var type = document.getElementById('otype').value;
+  var deltaOverride = parseFloat(document.getElementById('delta').value);
+  var gammaOverride = parseFloat(document.getElementById('gamma').value);
+  var thetaOverride = parseFloat(document.getElementById('theta').value);
+  var vegaOverride = parseFloat(document.getElementById('vega').value);
 
   var current = blackScholes(S, K, T, r, sigma, type);
   var greeks = blackScholesGreeks(S, K, T, r, sigma, type);
+  if (!isNaN(deltaOverride)) greeks.delta = deltaOverride;
+  if (!isNaN(gammaOverride)) greeks.gamma = gammaOverride;
+  if (!isNaN(thetaOverride)) greeks.theta = thetaOverride;
+  if (!isNaN(vegaOverride)) greeks.vega = vegaOverride;
 
   var approxTarget = current + greeks.delta * (target - S);
   var approxStop = current + greeks.delta * (stop - S);
@@ -132,8 +147,6 @@ document.getElementById('calc').addEventListener('click', function() {
     'Approx at stop (delta): ' + approxStop.toFixed(2) + '\n' +
     'Price at target (BS): ' + targetVal.toFixed(2) + '\n' +
     'Price at stop (BS): ' + stopVal.toFixed(2);
-    'Price at target: ' + targetVal.toFixed(2) + '\n' +
-    'Price at stop: ' + stopVal.toFixed(2);
 });
 </script>
 
