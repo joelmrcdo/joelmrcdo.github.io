@@ -67,6 +67,11 @@ function normCdf(x) {
   var t = 1 / (1 + 0.2316419 * Math.abs(x));
   var d = 0.3989423 * Math.exp(-x * x / 2);
   var prob = d * t * (0.3193815 + t * (-0.3565638 + t * (1.781478 + t * (-1.821256 + t * 1.330274))));
+  return x >= 0 ? 1 - prob : prob;
+}
+
+function normPdf(x) {
+  return Math.exp(-0.5 * x * x) / Math.sqrt(2 * Math.PI);
   if (x >= 0) return 1 - prob; else return prob;
 }
 
@@ -75,6 +80,26 @@ function blackScholes(S, K, T, r, sigma, type) {
   var d2 = d1 - sigma * Math.sqrt(T);
   if (type === 'call') {
     return S * normCdf(d1) - K * Math.exp(-r * T) * normCdf(d2);
+  }
+  return K * Math.exp(-r * T) * normCdf(-d2) - S * normCdf(-d1);
+}
+
+function blackScholesGreeks(S, K, T, r, sigma, type) {
+  var d1 = (Math.log(S / K) + (r + 0.5 * sigma * sigma) * T) / (sigma * Math.sqrt(T));
+  var d2 = d1 - sigma * Math.sqrt(T);
+  var pdf = normPdf(d1);
+  var delta = type === 'call' ? normCdf(d1) : normCdf(d1) - 1;
+  var gamma = pdf / (S * sigma * Math.sqrt(T));
+  var vega = S * pdf * Math.sqrt(T) / 100; // per 1% IV
+  var thetaTerm = -(S * pdf * sigma) / (2 * Math.sqrt(T));
+  var theta;
+  if (type === 'call') {
+    theta = (thetaTerm - r * K * Math.exp(-r * T) * normCdf(d2)) / 365;
+  } else {
+    theta = (thetaTerm + r * K * Math.exp(-r * T) * normCdf(-d2)) / 365;
+  }
+  return { delta: delta, gamma: gamma, vega: vega, theta: theta };
+=======
   } else {
     return K * Math.exp(-r * T) * normCdf(-d2) - S * normCdf(-d1);
   }
@@ -91,11 +116,22 @@ document.getElementById('calc').addEventListener('click', function() {
   var type = document.getElementById('otype').value;
 
   var current = blackScholes(S, K, T, r, sigma, type);
+  var greeks = blackScholesGreeks(S, K, T, r, sigma, type);
+
+  var approxTarget = current + greeks.delta * (target - S);
+  var approxStop = current + greeks.delta * (stop - S);
+
   var targetVal = blackScholes(target, K, T, r, sigma, type);
   var stopVal = blackScholes(stop, K, T, r, sigma, type);
 
   document.getElementById('result').textContent =
     'Current option price: ' + current.toFixed(2) + '\n' +
+    'Delta: ' + greeks.delta.toFixed(4) + ' Gamma: ' + greeks.gamma.toFixed(4) + '\n' +
+    'Theta/day: ' + greeks.theta.toFixed(4) + ' Vega: ' + greeks.vega.toFixed(4) + '\n' +
+    'Approx at target (delta): ' + approxTarget.toFixed(2) + '\n' +
+    'Approx at stop (delta): ' + approxStop.toFixed(2) + '\n' +
+    'Price at target (BS): ' + targetVal.toFixed(2) + '\n' +
+    'Price at stop (BS): ' + stopVal.toFixed(2);
     'Price at target: ' + targetVal.toFixed(2) + '\n' +
     'Price at stop: ' + stopVal.toFixed(2);
 });
