@@ -139,3 +139,5 @@ document.getElementById('refresh-data').addEventListener('click', function() {
   setTimeout(function(){ if (thebe) { thebe.runAll(); } }, 1000);
 });
 </script>
+
+**Financial disclaimer:** This material is for educational purposes only and is not financial advice.
