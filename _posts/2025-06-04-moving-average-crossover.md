@@ -29,6 +29,8 @@ date: 2025-06-04 00:00:00 +0000
 </ul>
 <button id="refresh-data">Refresh Data</button>
 
+<p>Click this button to run the code and render the chart.</p>
+
 <pre data-executable="true" data-language="python">
 import pandas as pd
 import matplotlib.pyplot as plt
