@@ -6,6 +6,7 @@ This note describes how to evaluate a simple moving average crossover strategy. 
 
 <pre data-executable="true" data-language="python">
 import pandas as pd
+import matplotlib.pyplot as plt
 
 # load sample data if `yfinance` download fails
 try:
@@ -14,9 +15,21 @@ try:
 except Exception:
     data = pd.DataFrame({'Close': [100, 101, 102, 103, 104]})
 
-data['fast_ma'] = data['Close'].rolling(window=2).mean()
-data['slow_ma'] = data['Close'].rolling(window=4).mean()
-data.tail()
+data['fast_ma'] = data['Close'].rolling(window=20, min_periods=1).mean()
+data['slow_ma'] = data['Close'].rolling(window=50, min_periods=1).mean()
+
+# plot moving averages
+data[['Close', 'fast_ma', 'slow_ma']].plot(title='Moving Average Crossover')
+plt.show()
+
+# trading statistics
+data['position'] = (data['fast_ma'] > data['slow_ma']).astype(int)
+data['trade'] = data['position'].diff().abs().fillna(0)
+data['strategy_return'] = data['position'].shift(1) * data['Close'].pct_change()
+total_return = (1 + data['strategy_return'].fillna(0)).prod() - 1
+num_trades = int(data['trade'].sum())
+
+pd.DataFrame({'total_return': [total_return], 'trades': [num_trades]})
 </pre>
 
 <script>
