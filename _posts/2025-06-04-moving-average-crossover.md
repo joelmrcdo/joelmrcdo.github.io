@@ -22,10 +22,10 @@ date: 2025-06-04 00:00:00 +0000
 
 <div class="clearfix">
 <div>
-<p>This strategy enters a long position when a short moving average crosses above a longer moving average and exits on the opposite crossover.</p>
+<p>This strategy enters a long position when a short moving average crosses above a longer moving average and exits on the opposite crossover. Use the fields below to adjust the moving average windows before running the example.</p>
 <ul>
-  <li><strong>FAST_MA:</strong> 3</li>
-  <li><strong>SLOW_MA:</strong> 6</li>
+  <li><strong>FAST_MA:</strong> <input id="fast-input" type="number" value="3" /></li>
+  <li><strong>SLOW_MA:</strong> <input id="slow-input" type="number" value="6" /></li>
 </ul>
 <button id="refresh-data">Refresh Data</button>
 
@@ -137,8 +137,13 @@ stats_df = pd.Series({
 
 <script>
 document.getElementById('refresh-data').addEventListener('click', function() {
+  const fast = parseInt(document.getElementById('fast-input').value) || 3;
+  const slow = parseInt(document.getElementById('slow-input').value) || 6;
   thebe.bootstrap();
-  thebe.once('kernel_ready.Kernel', () => thebe.runAll());
+  thebe.once('kernel_ready.Kernel', () => {
+    thebe.kernel.execute(`FAST = ${fast}\nSLOW = ${slow}`);
+    thebe.runAll();
+  });
 });
 </script>
 
