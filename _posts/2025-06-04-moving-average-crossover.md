@@ -136,6 +136,23 @@ stats_df = pd.Series({
 ```
 
 <script>
+window.addEventListener('load', function () {
+  thebe.bootstrap();
+  let kernelReady = false;
+  thebe.once('kernel_ready.Kernel', () => {
+    kernelReady = true;
+    thebe.runAll();
+  });
+  setTimeout(function () {
+    if (!kernelReady) {
+      console.error('Thebe kernel did not start within 10 seconds.');
+      const msg = document.createElement('div');
+      msg.textContent = 'Failed to start Python kernel. See console for details.';
+      msg.style.color = 'red';
+      document.body.prepend(msg);
+    }
+  }, 10000);
+
 document.getElementById('refresh-data').addEventListener('click', function() {
   const fast = parseInt(document.getElementById('fast-input').value) || 3;
   const slow = parseInt(document.getElementById('slow-input').value) || 6;
