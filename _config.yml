@@ -6,6 +6,11 @@ url: "https://joelmrcdo.github.io" # the base hostname & protocol for your site
 
 # Build settings
 markdown: kramdown
-theme: jekyll-theme-minimal
+theme: minima
+header_pages:
+  - index.md
+  - posts.md
+  - about.md
+  - target-calculator.md
 plugins:
   - jekyll-feed
