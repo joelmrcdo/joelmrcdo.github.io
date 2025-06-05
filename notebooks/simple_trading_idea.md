@@ -12,3 +12,5 @@ data['slow_ma'] = data['Close'].rolling(window=50).mean()
 signals = (data['fast_ma'] > data['slow_ma']).astype(int)
 signals.value_counts()
 ```
+
+**Financial disclaimer:** This material is for educational purposes only and is not financial advice.
