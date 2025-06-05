@@ -136,7 +136,7 @@ stats_df = pd.Series({
 <script>
 document.getElementById('refresh-data').addEventListener('click', function() {
   thebe.bootstrap();
-  setTimeout(function(){ if (thebe) { thebe.runAll(); } }, 1000);
+  thebe.once('kernel_ready.Kernel', () => thebe.runAll());
 });
 </script>
 
